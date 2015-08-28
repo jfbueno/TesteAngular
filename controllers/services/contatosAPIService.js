@@ -12,4 +12,4 @@ angular.module("listaTelefonica").factory("contatosAPI", function($http){
 		getContatos: _getContatos,
 		saveContato: _saveContato
 	};
-});
+}); 
