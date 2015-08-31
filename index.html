@@ -10,9 +10,13 @@
 	<script src="lib/angular/angular-messages.js"></script>
 	<script src="lib/angular/angular-locale_pt-br.js"></script>
 	<script src="js/app.js"></script>
-	<script src="controllers/listaTelefonicaController.js"></script>
-	<script src="controllers/services/contatosAPIService.js"></script>	
-	<script src="controllers/services/operadorasAPIService.js"></script>
+	<script src="js/controllers/listaTelefonicaController.js"></script>
+	<script src="js/services/contatosAPIService.js"></script>	
+	<script src="js/services/operadorasAPIService.js"></script>	
+	<script src="js/services/serialGeneratorService.js"></script>
+	<script src="js/config/serialGeneratorConfig.js"></script>
+	<script src="js/filters/nameFilter.js"></script>
+	<script src="js/filters/ellipsisFilter.js"></script>
 </head>
 <body ng-controller="listaTelefonicaCtrl">
 	<div class="jumbotron">
@@ -30,7 +34,7 @@
 			</tr>
 			<tr ng-class="{selecionado: contato.selecionado}" ng-repeat="contato in contatos | filter:{nome: busca} | orderBy:criterioOrdenacao:direcaoOrdenacao">
 				<td><input type="checkbox" ng-model="contato.selecionado"/></td>
-				<td>{{contato.nome}}</td>
+				<td>{{contato.nome | name | ellipsis:14}}</td>
 				<td>{{contato.telefone}}</td>					
 				<td>{{contato.operadora.nome}}</td>
 				<td>{{contato.data | date:'dd/MMM HH:mm'}}</td>
