@@ -30,10 +30,18 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($sc
 	};
 	
 	$scope.apagarContatos = function(contatos){
-		$scope.contatos = contatos.filter(function(contato){
+		var contatosDelete = contatos.filter(function(contato){
+			if(contato.selecionado)
+				return contato;
+		});
+		
+		contatosAPI.deleteContato("jefh");
+		carregarContatos();
+		
+		/*$scope.contatos = contatos.filter(function(contato){
 			if(!contato.selecionado)
 				return contato;
-		});					
+		});*/		
 	};				
 	
 	$scope.isContatoSelecionado = function(contatos){
@@ -49,4 +57,4 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($sc
 	
 	carregarContatos();
 	carregarOperadoras();
-	});
+});
