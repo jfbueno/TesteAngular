@@ -31,16 +31,9 @@ app.all('*', function(req, res, next) {
   next();
 });
 
-app.delete('/contatos', function(req, res){
-  //var index = contatos.indexOf(req.body);
-  
-  //if(index > -1){
-    //contatos.splice(index, 1);
-  //}
-  console.log(req.body);
-    for(var contato in req.body){
-      console.log(contato.nome);
-    }  
+app.delete('/contatos/:name', function(req, res){
+  console.log(req.params.name);
+  res.json(true); 
 });
 
 app.get('/contatos', function(req, res) {
