@@ -5,6 +5,7 @@
 	
 	<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css"></link>
 	<link rel="stylesheet" type="text/css" href="css/app.css"></link>
+	<link rel="stylesheet" type="text/css" href="css/ui.css"></link>
 	
 	<script src="lib/angular/angular.js"></script>
 	<script src="lib/angular/angular-messages.js"></script>
@@ -17,13 +18,19 @@
 	<script src="js/services/serialGeneratorService.js"></script>
 	<script src="js/config/serialGeneratorConfig.js"></script>
 	<script src="js/filters/nameFilter.js"></script>
-	<script src="js/filters/ellipsisFilter.js"></script>
+	<script src="js/filters/ellipsisFilter.js"></script>	
+	<script src="js/directives/uiAlertDirective.js"></script>
+	<script src="js/directives/uiDateDirective.js"></script>
 </head>
 <body ng-controller="listaTelefonicaCtrl">
 	<div class="jumbotron">
 		<h3 ng-bind="app"></h3>
-		<input class="form-control" type="text" ng-model="busca" placeholder="O que você procura?"/>		
-		{{message}}
+		<input class="form-control" type="text" ng-model="busca" placeholder="O que você procura?"/>
+		
+		<div ui-alert title="Ops, aconteceu um problema" ng-show="{{message}}">
+			{{message}}		
+		</div>
+			
 		<table class="table" ng-show="contatos.length > 0">
 			<tr>
 				<th></th>
@@ -38,7 +45,7 @@
 				<td>{{contato.nome | name | ellipsis:14}}</td>
 				<td>{{contato.telefone}}</td>					
 				<td>{{contato.operadora.nome}}</td>
-				<td>{{contato.data | date:'dd/MMM HH:mm'}}</td>
+				<td>{{contato.data | date:'dd/MMM/yy'}}</td>
 				<td><div style="width: 20px; height: 20px;" ng-style="{'background-color':contato.cor}"></div></td>
 			</tr>
 		</table>		
@@ -46,6 +53,7 @@
 		<form name="contatoForm">
 			<input class="form-control" type="text" ng-model="contato.nome" name="nome" placeholder="Nome" ng-required="true" ng-minlength="10"/> 
 			<input class="form-control" type="text" ng-model="contato.telefone" name="telefone" placeholder="Telefone" ng-required="true" ng-pattern="/^\d{4,5}-\d{4}$/"/>
+			<input class="form-control" type="text" ng-model="contato.data" name="data" placeholder="Data de início" ui-date/>
 			<select class="form-control" ng-model="contato.operadora" ng-options="op.nome + ' (' + (op.preco | currency) + ')' group by op.categoria for op in operadoras | orderBy:'nome'">
 				<option value="">Selecione uma operadora</option>
 			</select>
