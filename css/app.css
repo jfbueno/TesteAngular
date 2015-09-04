@@ -12,6 +12,15 @@ hr {
 	margin-right: auto;
 }
 
+.jumbotron-personal .jumbotron{
+	width: 90%;
+	height: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-bottom: 5%;
+	margin-top: 5%;
+}
+
 .table{
 	margin-top:20px;
 }

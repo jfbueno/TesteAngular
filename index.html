@@ -21,16 +21,27 @@
 	<script src="js/filters/ellipsisFilter.js"></script>	
 	<script src="js/directives/uiAlertDirective.js"></script>
 	<script src="js/directives/uiDateDirective.js"></script>
+	<script src="js/directives/uiAccordionDirective.js"></script>
 </head>
 <body ng-controller="listaTelefonicaCtrl">
 	<div class="jumbotron">
 		<h3 ng-bind="app"></h3>
-		<input class="form-control" type="text" ng-model="busca" placeholder="O que você procura?"/>
 		
-		<div ui-alert title="Ops, aconteceu um problema" ng-show="{{message}}">
-			{{message}}		
-		</div>
+		<ui-accordions>
+			<ui-accordion title="Accordion 1">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque maximus, ante vel malesuada venenatis, tortor enim pulvinar elit, quis consectetur lectus velit ut neque. Etiam feugiat non odio ut posuere. Duis a lacus ut leo placerat pellentesque. Nullam et leo efficitur nisl molestie dignissim. Cras tristique porttitor enim, eu placerat tortor mollis quis. Sed condimentum ex ut diam dapibus, a venenatis est efficitur. Nunc lorem lorem, sodales in commodo sed, pellentesque fringilla nunc. Pellentesque dictum lacus id laoreet pulvinar. Sed porta, turpis non varius maximus, lacus neque auctor urna, eget consequat mi nunc ut quam. Etiam quis aliquam tortor, in pellentesque mi.
+			</ui-accordion>
 			
+			<ui-accordion title="Accordion 2">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque maximus, ante vel malesuada venenatis, tortor enim pulvinar elit, quis consectetur lectus velit ut neque. Etiam feugiat non odio ut posuere. Duis a lacus ut leo placerat pellentesque. Nullam et leo efficitur nisl molestie dignissim. Cras tristique porttitor enim, eu placerat tortor mollis quis. Sed condimentum ex ut diam dapibus, a venenatis est efficitur. Nunc lorem lorem, sodales in commodo sed, pellentesque fringilla nunc. Pellentesque dictum lacus id laoreet pulvinar. Sed porta, turpis non varius maximus, lacus neque auctor urna, eget consequat mi nunc ut quam. Etiam quis aliquam tortor, in pellentesque mi.
+			</ui-accordion>
+		</ui-accordions>
+		<hr/>
+		
+		<input class="form-control" type="text" ng-model="busca" placeholder="O que você procura?"/>		
+		<div ui-alert title="Ops, aconteceu um problema" hidden="true">
+			{{message}}		
+		</div>			
 		<table class="table" ng-show="contatos.length > 0">
 			<tr>
 				<th></th>
