@@ -32,6 +32,7 @@ app.all('*', function(req, res, next) {
 });
 
 app.delete('/contatos/:name', function(req, res){
+  console.log(res.data);
   console.log(req.params.name);
   res.json(true); 
 });

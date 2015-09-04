@@ -10,7 +10,7 @@ angular.module("listaTelefonica").factory("contatosAPI", function($http, config)
 	
 	var _deleteContato = function(contatosDelete){
 		console.log(contatosDelete);
-		return $http.delete(config.apiBaseUrl + "/contatos/jefh"); //isso ainda é só teste
+		return $http.delete(config.apiBaseUrl + "/contatos/jefh-", '{prop1: val1}' ); //isso ainda é só teste
 	};
 	
 	return {
